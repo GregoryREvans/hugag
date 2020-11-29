@@ -25,6 +25,11 @@ segment_01_rhythm_timespans = evans.timespan.make_split_list(
     rhythm_timespan_list, bounds
 )
 
+# showable_list = abjad.TimespanList([abjad.AnnotatedTimespan(_.start_offset, _.stop_offset, annotation=_.voice_name) for _ in segment_01_rhythm_timespans])
+# abjad.show(showable_list, scale=0.7, key="annotation")
+# raise Exception("STOP")
+
+
 rhythm_commands = []
 for span in segment_01_rhythm_timespans:
     r_command = evans.RhythmCommand(
@@ -39,4 +44,4 @@ evans.timespan.intercalate_silences(rhythm_commands)
 # ##############
 # all commands#
 # ##############
-handler_commands = []
+handler_commands = [None]

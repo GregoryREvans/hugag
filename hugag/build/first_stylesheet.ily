@@ -200,6 +200,7 @@ dashedStaffSymbolLines =
 		\override BarLine.bar-extent = #'(0 . 0)
 		\override BarLine.hair-thickness = #0.9
 		\override BarLine.thick-thickness = #8
+		\override BarLine.transparent = ##t
         \override Beam.breakable = ##t
 		\override Beam.concaveness = #10000
 		\override Clef.whiteout-style = #'outline
@@ -218,12 +219,11 @@ dashedStaffSymbolLines =
         \override SpacingSpanner.strict-grace-spacing = ##t
         \override StaffGrouper.staff-staff-spacing = #'((basic-distance . 14) (minimum-distance . 14) (padding . 2))
 		\override Stem.stemlet-length = #1.15
-		\override StemTremolo.beam-width = 1
-		\override StemTremolo.beam-thickness = #0.3
-        \override StemTremolo.flag-count = 4
-        \override StemTremolo.slope = 0.5
-		\override StemTremolo.slope = #0.3
-		\override StemTremolo.shape = #'beam-like
+		% \override StemTremolo.beam-width = 1
+		% \override StemTremolo.beam-thickness = #0.3
+        % \override StemTremolo.flag-count = 4
+		% \override StemTremolo.slope = #0.3
+		% \override StemTremolo.shape = #'beam-like
 		\override TupletBracket.bracket-visibility = ##t
         \override TupletBracket.minimum-length = #3
         \override TupletBracket.padding = #1.5
@@ -286,13 +286,13 @@ dashedStaffSymbolLines =
 		fontSize = #-1
         \override Glissando.bound-details.left.padding = #0.5
         \override Glissando.bound-details.right.padding = #0.5
-        \override Glissando.thickness = #2
+        \override Glissando.thickness = #3
         \override Stem.direction = #down
         \override StaffSymbol.line-positions = #'(-8.2 -8 -6 -4 -2 -0.2 0 0.2 2 4 6 8 8.2)
 		\dashedStaffSymbolLines #'(#t #t #t #t #t #t #f #f #f #f #f #f #f)
 		\RemoveAllEmptyStaves
         \override VerticalAxisGroup.remove-first = ##t
-        \hide BarLine
+        %{ \hide BarLine %}
 		\clef alto
 		\override Clef.stencil = ##f
 		\override Accidental.stencil = ##f
@@ -319,7 +319,7 @@ dashedStaffSymbolLines =
         \override StaffSymbol.line-positions = #'(-8.2 -8 8 8.2)
 		\RemoveAllEmptyStaves
         \override VerticalAxisGroup.remove-first = ##t
-        \hide BarLine
+        %{ \hide BarLine %}
 		\override NoteHead.no-ledgers = ##t
 		\clef alto
 		\override Clef.stencil = ##f
@@ -357,7 +357,7 @@ dashedStaffSymbolLines =
         \override StaffSymbol.line-positions = #'(-15.2 -15 7 7.2)
 		\RemoveAllEmptyStaves
         \override VerticalAxisGroup.remove-first = ##t
-        \hide BarLine
+        %{ \hide BarLine %}
 		\override NoteHead.no-ledgers = ##t
 		%{ \clef percussion %}
 		\clef alto
@@ -386,7 +386,7 @@ dashedStaffSymbolLines =
         \remove Bar_number_engraver
 		\remove Mark_engraver
 		fontSize = #-1
-        \hide BarLine
+        %{ \hide BarLine %}
     }
     \context {
         \RhythmicStaff
@@ -402,12 +402,13 @@ dashedStaffSymbolLines =
         \override StaffSymbol.line-positions = #'(0)
 		\RemoveAllEmptyStaves
         \override VerticalAxisGroup.remove-first = ##t
-        \hide BarLine
+        %{ \hide BarLine %}
 		%{ \clef percussion %}
 		\with {
 			instrumentName = #"Dynamics"
 			shortInstrumentName = #"dyn."
 		}
+		\override Glissando.thickness = #3
     }
     \context {
         \Voice
@@ -426,7 +427,7 @@ dashedStaffSymbolLines =
 		\clef "bass_15"
         \override StaffSymbol.line-positions = #'(0)
         \override VerticalAxisGroup.remove-first = ##t
-        \hide BarLine
+        %{ \hide BarLine %}
 
         \override Beam.direction = #down
         \override Beam.positions = #'(6 . 6)

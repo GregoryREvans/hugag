@@ -10,6 +10,56 @@ from hugag.materials.score_structure.score_structure import score
 from hugag.materials.score_structure.segment_01.time_signatures import time_signatures
 from hugag.materials.timespans.segment_01.convert_timespans import rhythm_commands
 
+cyc_angles = evans.CyclicList([-45, 45, -5, -45, 60, -15, None], forget=False)
+
+
+def _make_angles(selections):
+    for leaf in abjad.select(selections).leaves(pitched=True):
+        bap = evans.BowAnglePoint(cyc_angles(r=1)[0])
+        tech = abjad.BowMotionTechnique("ordinario")
+        abjad.attach(bap, leaf)
+        abjad.attach(tech, leaf)
+    evans.bow_angle_spanner(selections)
+
+
+cyc_dynamics = evans.CyclicList(["p", "f", "mf", "mp", "pp", "f"], forget=False)
+
+
+def _make_dynamics(selections):
+    runs = abjad.select(selections).runs()
+    leaves = abjad.select(selections).leaves(pitched=True)
+    dynamics = cyc_dynamics(r=len(leaves))
+    for i, leaf in enumerate(leaves):
+        dyn = abjad.Dynamic(dynamics[i], direction=abjad.Up)
+        abjad.attach(dyn, leaf)
+    for run in runs:
+        ls = abjad.select(run).leaves()
+        for i, leaf in enumerate(ls[:-1]):
+            if (
+                abjad.Dynamic(dynamics[i]).ordinal
+                < abjad.Dynamic(dynamics[i + 1]).ordinal
+            ):
+                hairpin_string = "<"
+            else:
+                hairpin_string = ">"
+            abjad.attach(abjad.StartHairpin(hairpin_string, direction=abjad.Up), leaf)
+    abjad.glissando(selections[:], zero_padding=True, allow_repeats=True)
+    for run in abjad.select(selections).runs():
+        leaves = abjad.select(run).leaves()
+        for leaf in leaves[1:-1]:
+            abjad.tweak(leaf.note_head).transparent = True
+            abjad.tweak(leaf.note_head).X_extent = (0, 0)
+
+
+def _make_glissando(selections):
+    abjad.glissando(selections[:], zero_padding=True, allow_repeats=True)
+    for run in abjad.select(selections).runs():
+        leaves = abjad.select(run).leaves()
+        for leaf in leaves[1:-1]:
+            abjad.tweak(leaf.note_head).transparent = True
+            abjad.tweak(leaf.note_head).X_extent = (0, 0)
+
+
 maker = evans.SegmentMaker(
     instruments=insts,
     # names=[
@@ -34,16 +84,130 @@ maker = evans.SegmentMaker(
             evans.SegmentMaker.rewrite_meter,
             abjad.select().components(abjad.Score),
         ),
-        "skips",
-        evans.call(
-            "score",
-            evans.SegmentMaker.transform_brackets,
-            abjad.select().components(abjad.Score),
-        ),
+        # evans.call(
+        #     "score",
+        #     evans.SegmentMaker.transform_brackets,
+        #     abjad.select().components(abjad.Score),
+        # ),
         evans.call(
             "score",
             evans.SegmentMaker.beam_score,
             abjad.select().components(abjad.Score),
+        ),
+        "skips",
+        evans.call(
+            "Voice 3",
+            _make_angles,
+            abjad.select().leaves().get([0, 1, 2, 4, 5, 6, 7]),
+        ),
+        evans.attach(
+            "Voice 3",
+            abjad.LilyPondLiteral(
+                [
+                    r"\stopStaff",
+                ],
+                format_slot="before",
+            ),
+            baca.leaf(9),
+        ),
+        evans.attach(
+            "Voice 3 copy",
+            abjad.LilyPondLiteral(
+                [
+                    r"\stopStaff",
+                    r"\override Rest.transparent = ##t",
+                    r"\override TupletBracket.transparent = ##t",
+                    r"\override TupletNumber.transparent = ##t",
+                    r"\override Dots.transparent = ##t",
+                ],
+                format_slot="before",
+            ),
+            baca.leaf(9),
+        ),
+        evans.call(
+            "Voice 4",
+            evans.PitchHandler(
+                [
+                    [
+                        -15,
+                        -7,
+                    ],
+                    [
+                        -16.5,
+                        -5.5,
+                    ],
+                    [
+                        -15,
+                        -7,
+                    ],
+                    [
+                        -11.25,
+                        -1.25,
+                    ],
+                ],
+                forget=False,
+            ),
+            abjad.select(),
+        ),
+        evans.call(
+            "Voice 4",
+            abjad.glissando,
+            abjad.select(),
+        ),
+        evans.attach(
+            "Voice 5",
+            abjad.LilyPondLiteral(
+                [
+                    r"\stopStaff",
+                    r"\override Rest.transparent = ##t",
+                    r"\override TupletBracket.transparent = ##t",
+                    r"\override TupletNumber.transparent = ##t",
+                    r"\override Dots.transparent = ##t",
+                ],
+                format_slot="before",
+            ),
+            baca.leaf(6),
+        ),
+        evans.attach(
+            "Voice 5",
+            abjad.LilyPondLiteral(
+                [
+                    r"\startStaff",
+                    r"\override Rest.transparent = ##f",
+                    r"\override TupletBracket.transparent = ##f",
+                    r"\override TupletNumber.transparent = ##f",
+                    r"\override Dots.transparent = ##f",
+                ],
+                format_slot="before",
+            ),
+            baca.leaf(10),
+        ),
+        evans.call(
+            "Voice 5",
+            _make_dynamics,
+            abjad.select(),
+        ),
+        evans.attach(
+            "Voice 5",
+            abjad.Dynamic("pp", direction=abjad.Up),
+            baca.leaf(0),
+        ),
+        evans.attach(
+            "Voice 5",
+            abjad.StartHairpin("--", direction=abjad.Up),
+            baca.leaf(0),
+        ),
+        evans.call(
+            "Voice 1",
+            evans.PitchHandler(
+                [0, -1, -3, -6, -6.5, -5, -5.5, -2, 1, 4, 3], forget=False
+            ),
+            abjad.select(),
+        ),
+        evans.call(
+            "Voice 1",
+            _make_glissando,
+            abjad.select(),
         ),
         evans.call(
             "Voice 4",
