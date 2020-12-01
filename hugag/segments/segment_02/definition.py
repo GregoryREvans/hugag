@@ -7,8 +7,8 @@ import evans
 from hugag.materials.pitch import clef_handler_one
 from hugag.materials.score_structure.instruments import instruments as insts
 from hugag.materials.score_structure.score_structure import score
-from hugag.materials.score_structure.segment_01.time_signatures import time_signatures
-from hugag.materials.timespans.segment_01.convert_timespans import rhythm_commands
+from hugag.materials.score_structure.segment_02.time_signatures import time_signatures
+from hugag.materials.timespans.segment_02.convert_timespans import rhythm_commands
 
 cyc_angles = evans.CyclicList([-45, 45, -5, -45, 60, -15, None], forget=False)
 
@@ -82,12 +82,6 @@ def _set_name(selection):
 
 maker = evans.SegmentMaker(
     instruments=insts,
-    # names=[
-    #     '"Violoncello"',
-    # ],
-    # abbreviations=[
-    #     '"vc."',
-    # ],
     name_staves=False,
     commands=[
         rhythm_commands,
@@ -119,138 +113,36 @@ maker = evans.SegmentMaker(
             evans.SegmentMaker.rewrite_meter,
             abjad.select().components(abjad.Score),
         ),
-        # evans.call(
-        #     "score",
-        #     evans.SegmentMaker.transform_brackets,
-        #     abjad.select().components(abjad.Score),
-        # ),
-        evans.call(
-            "Voice 4",
-            _toggle_tuplets,
-            abjad.select().components(abjad.Tuplet).get([0, 1, 3, 7])
-        ),
-        # evans.call(
-        #     "score",
-        #     evans.NoteheadBracketMaker(),
-        #     abjad.select(),
-        # ),
         evans.call(
             "score",
             evans.SegmentMaker.beam_score,
             abjad.select().components(abjad.Score),
         ),
         "skips",
-        evans.call(
-            "Voice 3",
-            _make_angles,
-            abjad.select().leaves().get([0, 1, 2, 4, 5, 6, 7]),
-        ),
-        evans.attach(
-            "Voice 3",
-            abjad.Markup("clb.", direction=abjad.Up),
-            baca.leaf(7),
-        ),
-        # evans.attach(
-        #     "Voice 3",
-        #     abjad.LilyPondLiteral(
-        #         [
-        #             r"\stopStaff",
-        #         ],
-        #         format_slot="before",
-        #     ),
-        #     baca.leaf(9),
-        # ),
-        # evans.attach(
-        #     "Voice 3 copy",
-        #     abjad.LilyPondLiteral(
-        #         [
-        #             r"\stopStaff",
-        #             r"\override Rest.transparent = ##t",
-        #             r"\override TupletBracket.transparent = ##t",
-        #             r"\override TupletNumber.transparent = ##t",
-        #             r"\override Dots.transparent = ##t",
-        #         ],
-        #         format_slot="before",
-        #     ),
-        #     baca.leaf(9),
-        # ),
-        evans.call(
-            "Voice 4",
-            evans.PitchHandler(
-                [
-                    [
-                        -15,
-                        -7,
-                    ],
-                    [
-                        -16.5,
-                        -5.5,
-                    ],
-                    [
-                        -15,
-                        -7,
-                    ],
-                    [
-                        -11.25,
-                        -1.25,
-                    ],
-                ],
-                forget=False,
-            ),
-            abjad.select(),
-        ),
-        evans.call(
-            "Voice 4",
-            abjad.glissando,
-            abjad.select(),
-        ),
-        # evans.attach(
+        # evans.call(
         #     "Voice 5",
-        #     abjad.LilyPondLiteral(
-        #         [
-        #             r"\stopStaff",
-        #             r"\override Rest.transparent = ##t",
-        #             r"\override TupletBracket.transparent = ##t",
-        #             r"\override TupletNumber.transparent = ##t",
-        #             r"\override Dots.transparent = ##t",
-        #         ],
-        #         format_slot="before",
-        #     ),
-        #     baca.leaf(6),
+        #     _make_dynamics,
+        #     abjad.select(),
         # ),
-        # evans.attach(
-        #     "Voice 5",
-        #     abjad.LilyPondLiteral(
-        #         [
-        #             r"\startStaff",
-        #             r"\override Rest.transparent = ##f",
-        #             r"\override TupletBracket.transparent = ##f",
-        #             r"\override TupletNumber.transparent = ##f",
-        #             r"\override Dots.transparent = ##f",
-        #         ],
-        #         format_slot="before",
-        #     ),
-        #     baca.leaf(10),
-        # ),
-        evans.call(
-            "Voice 5",
-            _make_dynamics,
-            abjad.select(),
-        ),
-        evans.attach(
-            "Voice 5",
-            abjad.Dynamic("pp", direction=abjad.Up),
-            baca.leaf(0),
-        ),
-        evans.attach(
-            "Voice 5",
-            abjad.StartHairpin("--", direction=abjad.Up),
-            baca.leaf(0),
-        ),
         evans.call(
             "Voice 1",
             evans.PitchHandler(
-                [0, -1, -3, -6, -6.5, -5, -5.5, -2, 1, 4, 3], forget=False
+                [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    4.5,
+                    -2,
+                    -3.5,
+                    -0.5,
+                    0,
+                    1.5,
+                ],
+                forget=False,
             ),
             abjad.select(),
         ),
@@ -264,27 +156,21 @@ maker = evans.SegmentMaker(
             clef_handler_one,
             abjad.select(),
         ),
-        evans.attach(
-            "Voice 4",
-            abjad.Markup("clt.", direction=abjad.Up),
-            baca.leaf(3),
-        ),
     ],
     score_template=score,
     time_signatures=time_signatures,
-    # clef_handlers=clef_handlers,
     tuplet_bracket_noteheads=False,
-    add_final_grand_pause=False,
+    add_final_grand_pause=True,
     score_includes=[
         "/Users/evansdsg2/abjad/docs/source/_stylesheets/abjad.ily",
         "/Users/evansdsg2/Scores/hugag/hugag/build/first_stylesheet.ily",
     ],
-    segment_name="segment_01",
+    segment_name="segment_02",
     current_directory=pathlib.Path(__file__).resolve().parent,
     cutaway=False,
     beam_pattern="meter",
     beam_rests=True,
-    mm_rests=False,
+    mm_rests=True,
     barline="||",
     tempo=((1, 4), 115),
     rehearsal_mark="",

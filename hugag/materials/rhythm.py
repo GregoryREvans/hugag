@@ -45,26 +45,19 @@ rhythm_handler_one = evans.RhythmHandler(
     name="rhythm_handler_one",
 )
 
-rmaker_two = abjadext.rmakers.stack(
-    abjadext.rmakers.talea(
-        [
-            3,
-            5,
-            9,
-            7,
-            6,
-        ],
-        4,
-        extra_counts=[
-            0,
-            -1,
-            1,
-        ],
-    ),
-    abjadext.rmakers.trivialize(abjad.select().tuplets()),
-    abjadext.rmakers.extract_trivial(abjad.select().tuplets()),
-    # abjadext.rmakers.rewrite_rest_filled(abjad.select().tuplets()),
-    # abjadext.rmakers.rewrite_sustained(abjad.select().tuplets()),
+rmaker_two = evans.RTMMaker(
+    [
+        "(1 (1))",
+        "(1 (1 1))",
+        "(1 (1))",
+        "(1 (1))",
+        "(1 (1))",
+        "(1 (1))",
+        "(1 (1))",
+        "(1 (1 1))",
+        "(1 (1 1))",
+        "(1 (1))",
+    ]
 )
 
 rhythm_handler_two = evans.RhythmHandler(

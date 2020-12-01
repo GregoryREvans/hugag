@@ -2,7 +2,7 @@
 \language "english"
 
 #(set-default-paper-size "letterportrait")
-#(set-global-staff-size 12)
+#(set-global-staff-size 14) % was 12
 
 \include "/Users/evansdsg2/evans/lilypond/evans-markups.ily"
 \include "/Users/evansdsg2/evans/lilypond/evans-spanners.ily"
@@ -197,10 +197,11 @@ dashedStaffSymbolLines =
         \remove Bar_number_engraver
 		\remove Mark_engraver
         \accepts TimeSignatureContext
-		\override BarLine.bar-extent = #'(0 . 0)
+		\override BarLine.bar-extent = #'(0 . 1/4)
 		\override BarLine.hair-thickness = #0.9
 		\override BarLine.thick-thickness = #8
 		\override BarLine.transparent = ##t
+		%{ \override SpanBar.bar-extent = #'(0 . 20) %}
         \override Beam.breakable = ##t
 		\override Beam.concaveness = #10000
 		\override Clef.whiteout-style = #'outline
@@ -212,7 +213,7 @@ dashedStaffSymbolLines =
 		\override Hairpin.padding = #2
 		\override Glissando.breakable = ##t
 		\override Glissando.thickness = #2
-		\override Stem.thickness = #0.5
+		% \override Stem.thickness = #0.5
 		\override Staff.thickness = #0.5
 		\override MetronomeMark.font-size = 3
 		\override NoteColumn.ignore-collision = ##t %
@@ -291,15 +292,15 @@ dashedStaffSymbolLines =
         \override StaffSymbol.line-positions = #'(-8.2 -8 -6 -4 -2 -0.2 0 0.2 2 4 6 8 8.2)
 		\dashedStaffSymbolLines #'(#t #t #t #t #t #t #f #f #f #f #f #f #f)
 		\RemoveAllEmptyStaves
-        \override VerticalAxisGroup.remove-first = ##t
+        % \override VerticalAxisGroup.remove-first = ##t
         %{ \hide BarLine %}
 		\clef alto
 		\override Clef.stencil = ##f
 		\override Accidental.stencil = ##f
 		\override AccidentalCautionary.stencil = ##f
 		\with {
-			instrumentName = #"SCP"
-			shortInstrumentName = #"scp."
+			instrumentName = \markup{\center-column{"String" "Contact" "Point"}}
+			shortInstrumentName = \markup{\center-column{"string" "contact" "point"}}
 		}
     }
     \context {
@@ -318,7 +319,7 @@ dashedStaffSymbolLines =
         \override Stem.direction = #down
         \override StaffSymbol.line-positions = #'(-8.2 -8 8 8.2)
 		\RemoveAllEmptyStaves
-        \override VerticalAxisGroup.remove-first = ##t
+        % \override VerticalAxisGroup.remove-first = ##t
         %{ \hide BarLine %}
 		\override NoteHead.no-ledgers = ##t
 		\clef alto
@@ -354,9 +355,9 @@ dashedStaffSymbolLines =
         \override Glissando.bound-details.right.padding = #0.5
         \override Glissando.thickness = #2
         \override Stem.direction = #down
-        \override StaffSymbol.line-positions = #'(-15.2 -15 7 7.2)
+        \override StaffSymbol.line-positions = #'(-15.2 -15 7 7.2) % with or without bottom line?
 		\RemoveAllEmptyStaves
-        \override VerticalAxisGroup.remove-first = ##t
+        % \override VerticalAxisGroup.remove-first = ##t
         %{ \hide BarLine %}
 		\override NoteHead.no-ledgers = ##t
 		%{ \clef percussion %}
@@ -401,12 +402,12 @@ dashedStaffSymbolLines =
         \override Stem.direction = #down
         \override StaffSymbol.line-positions = #'(0)
 		\RemoveAllEmptyStaves
-        \override VerticalAxisGroup.remove-first = ##t
+        % \override VerticalAxisGroup.remove-first = ##t
         %{ \hide BarLine %}
 		%{ \clef percussion %}
 		\with {
 			instrumentName = #"Dynamics"
-			shortInstrumentName = #"dyn."
+			shortInstrumentName = #"dynamics"
 		}
 		\override Glissando.thickness = #3
     }
@@ -426,7 +427,7 @@ dashedStaffSymbolLines =
 		fontSize = #-1
 		\clef "bass_15"
         \override StaffSymbol.line-positions = #'(0)
-        \override VerticalAxisGroup.remove-first = ##t
+        % \override VerticalAxisGroup.remove-first = ##t
         %{ \hide BarLine %}
 
         \override Beam.direction = #down

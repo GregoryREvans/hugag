@@ -183,6 +183,25 @@
             }
 
             \context SubGroup = "SubGroup 1"
+            \with
+            {
+                instrumentName = \markup {
+                    \center-column
+                        {
+                            Bow
+                            Contact
+                            Point
+                        }
+                    }
+                shortInstrumentName = \markup {
+                    \center-column
+                        {
+                            bow
+                            contact
+                            point
+                        }
+                    }
+            }
             <<
 
                 \tag #'voice2
@@ -348,6 +367,23 @@
             >>
 
             \context SubGroup = "SubGroup 2"
+            \with
+            {
+                instrumentName = \markup {
+                    \center-column
+                        {
+                            Bow
+                            Angle
+                        }
+                    }
+                shortInstrumentName = \markup {
+                    \center-column
+                        {
+                            bow
+                            angle
+                        }
+                    }
+            }
             <<
 
                 \tag #'voice4
@@ -493,6 +529,7 @@
 
                             \tweak style #'cross
                             c'4
+                            ^ \markup { clb. }
 
                             r4
 
@@ -500,7 +537,6 @@
                             \times 2/3 {
                                 % [Voice 3 measure 3]                          %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
 
-                                \stopStaff
                                 r2
 
                             }
@@ -596,11 +632,6 @@
                             \times 2/3 {
                                 % [Voice 3 copy measure 3]                     %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
 
-                                \stopStaff
-                                \override Rest.transparent = ##t
-                                \override TupletBracket.transparent = ##t
-                                \override TupletNumber.transparent = ##t
-                                \override Dots.transparent = ##t
                                 r2
 
                             }
@@ -663,96 +694,95 @@
             {
 
                 \context Staff = "Staff 4"
+                \with
+                {
+                    instrumentName = \markup {
+                        \center-column
+                            {
+                                Left
+                                Hand
+                            }
+                        }
+                    shortInstrumentName = \markup {
+                        \center-column
+                            {
+                                left
+                                hand
+                            }
+                        }
+                }
                 {
 
                     \context Voice = "Voice 4"
                     {
-                        % [Voice 4 measure 1]                                  %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
-
-                        \clef "bass"
-                        <a, f>2
-                        ~
-
-                        <a, f>4
-                        \glissando                                             %! abjad.glissando(7)
-
-                        \tweak edge-height #'(0.7 . 0)
-                        \times 2/3 {
-
-                            <gqs, gqf>2
-                            ~
-
-                            <gqs, gqf>8
-                            ~
-
-                        }
-
-                        \times 4/5 {
-                            % [Voice 4 measure 2]                              %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
-
-                            <gqs, gqf>1
-                            ~
-
-                            <gqs, gqf>4
-                            ~
-
-                        }
-
-                        \times 4/5 {
-
-                            <gqs, gqf>2
-                            ~
-
-                            <gqs, gqf>8
-                            ~
-
-                        }
-
-                        \tweak edge-height #'(0.7 . 0)
-                        \times 8/21 {
-                            % [Voice 4 measure 3]                              %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
-
-                            <gqs, gqf>2..
-                            ~
-
-                        }
-                        % [Voice 4 measure 4]                                  %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
-
-                        <gqs, gqf>2
-                        \glissando                                             %! abjad.glissando(7)
 
                         \tweak text #tuplet-number::calc-fraction-text
                         \tweak edge-height #'(0.7 . 0)
-                        \times 16/15 {
-                            % [Voice 4 measure 5]                              %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
+                        \times 7/6 {
+                            % [Voice 4 measure 1]                              %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
 
-                            <a, f>2
-                            ~
-
-                            <a, f>8
-                            ~
+                            \clef "bass"
+                            <a, f>1
+                            \glissando                                         %! abjad.glissando(7)
 
                         }
 
-                        \tweak edge-height #'(0.7 . 0)
-                        \times 8/17 {
-                            % [Voice 4 measure 6]                              %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
+                        \tweak text #tuplet-number::calc-fraction-text
+                        \times 3/2 {
+                            % [Voice 4 measure 2]                              %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
+
+                            <gqs, gqf>2
+                            \glissando                                         %! abjad.glissando(7)
 
                             <a, f>2
-                            ~
-
-                        }
-
-                        \tweak edge-height #'(0.7 . 0)
-                        \times 32/85 {
-
-                            <a, f>2....
                             \glissando                                         %! abjad.glissando(7)
 
                         }
 
                         \tweak edge-height #'(0.7 . 0)
                         \times 2/3 {
+                            % [Voice 4 measure 3]                              %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
+
+                            <
+                                \tweak Accidental.stencil #ly:text-interface::print
+                                \tweak Accidental.text \five-eighths-flat-markup
+                                df
+                                \tweak Accidental.stencil #ly:text-interface::print
+                                \tweak Accidental.text \one-eighth-flat-markup
+                                b
+                            >2
+                            ^ \markup { clt. }
+                            \glissando                                         %! abjad.glissando(7)
+
+                        }
+                        % [Voice 4 measure 4]                                  %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
+
+                        <a, f>2
+                        \glissando                                             %! abjad.glissando(7)
+
+                        \tweak text #tuplet-number::calc-fraction-text
+                        \tweak edge-height #'(0.7 . 0)
+                        \times 4/3 {
+                            % [Voice 4 measure 5]                              %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
+
+                            <gqs, gqf>2
+                            \glissando                                         %! abjad.glissando(7)
+
+                        }
+
+                        \tweak text #tuplet-number::calc-fraction-text
+                        \tweak edge-height #'(0.7 . 0)
+                        \times 3/5 {
+                            % [Voice 4 measure 6]                              %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
+
+                            <a, f>1
+                            \glissando                                         %! abjad.glissando(7)
+
+                        }
+
+                        \tweak text #tuplet-number::calc-fraction-text
+                        \tweak edge-height #'(0.7 . 0)
+                        \times 5/6 {
                             % [Voice 4 measure 7]                              %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
 
                             <
@@ -763,24 +793,28 @@
                                 \tweak Accidental.text \one-eighth-flat-markup
                                 b
                             >1
-                            ~
-
-                            <
-                                \tweak Accidental.stencil #ly:text-interface::print
-                                \tweak Accidental.text \five-eighths-flat-markup
-                                df
-                                \tweak Accidental.stencil #ly:text-interface::print
-                                \tweak Accidental.text \one-eighth-flat-markup
-                                b
-                            >4
-                            ~
+                            \glissando                                         %! abjad.glissando(7)
 
                         }
 
                         \tweak text #tuplet-number::calc-fraction-text
-                        \tweak edge-height #'(0.7 . 0)
-                        \times 6/5 {
+                        \times 3/4 {
                             % [Voice 4 measure 8]                              %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
+
+                            <a, f>2
+                            \glissando                                         %! abjad.glissando(7)
+
+                            <gqs, gqf>2
+                            \glissando                                         %! abjad.glissando(7)
+
+                        }
+
+                        \tweak text #tuplet-number::calc-fraction-text
+                        \times 5/4 {
+                            % [Voice 4 measure 9]                              %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
+
+                            <a, f>2
+                            \glissando                                         %! abjad.glissando(7)
 
                             <
                                 \tweak Accidental.stencil #ly:text-interface::print
@@ -794,37 +828,11 @@
 
                         }
 
-                        \tweak text #tuplet-number::calc-fraction-text
-                        \tweak edge-height #'(0.7 . 0)
-                        \times 6/5 {
-
-                            <a, f>8
-                            ~
-
-                        }
-
-                        \tweak edge-height #'(0.7 . 0)
-                        \times 2/3 {
-                            % [Voice 4 measure 9]                              %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
-
-                            <a, f>1..
-                            \glissando                                         %! abjad.glissando(7)
-
-                        }
-
-                        \tweak edge-height #'(0.7 . 0)
-                        \times 2/3 {
-
-                            <gqs, gqf>8
-                            ~
-
-                        }
-
                         \tweak edge-height #'(0.7 . 0)
                         \times 4/5 {
                             % [Voice 4 measure 10]                             %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
 
-                            <gqs, gqf>2
+                            <a, f>2
                             \glissando                                         %! abjad.glissando(7)
                             \bar "||"
 
@@ -897,11 +905,6 @@
                         \times 2/3 {
                             % [Voice 5 measure 5]                              %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
 
-                            \stopStaff
-                            \override Rest.transparent = ##t
-                            \override TupletBracket.transparent = ##t
-                            \override TupletNumber.transparent = ##t
-                            \override Dots.transparent = ##t
                             r1
 
                         }
@@ -928,11 +931,6 @@
                         \times 3/4 {
                             % [Voice 5 measure 8]                              %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
 
-                            \startStaff
-                            \override Rest.transparent = ##f
-                            \override TupletBracket.transparent = ##f
-                            \override TupletNumber.transparent = ##f
-                            \override Dots.transparent = ##f
                             c'2
                             ^ \pp
                             ^ \<
@@ -951,7 +949,7 @@
                             \tweak transparent ##t
                             c'4
                             ^ \p
-                            ^ \>
+                            ^ \<
                             - \abjad-zero-padding-glissando                    %! abjad.glissando(7)
                             \glissando                                         %! abjad.glissando(7)
 
@@ -973,7 +971,7 @@
                             \tweak transparent ##t
                             c'2
                             ^ \mf
-                            ^ \<
+                            ^ \>
                             - \abjad-zero-padding-glissando                    %! abjad.glissando(7)
                             \glissando                                         %! abjad.glissando(7)
 

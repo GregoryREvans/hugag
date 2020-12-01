@@ -29,16 +29,7 @@ handler_to_value = abjad.OrderedDict(
             'rhythm_handler_two',
             abjad.OrderedDict(
                 [
-                    (
-                        'state',
-                        abjad.OrderedDict(
-                            [
-                                ('divisions_consumed', 10),
-                                ('logical_ties_produced', 6),
-                                ('talea_weight_consumed', 480),
-                                ]
-                            ),
-                        ),
+                    ('state', 9),
                     ]
                 ),
             ),
