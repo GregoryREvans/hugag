@@ -1,7 +1,6 @@
 import pathlib
 
 import abjad
-import baca
 import evans
 
 from hugag.materials.pitch import clef_handler_one
@@ -58,9 +57,11 @@ def _make_glissando(selections):
             abjad.tweak(leaf.note_head).transparent = True
             abjad.tweak(leaf.note_head).X_extent = (0, 0)
 
+
 def _toggle_tuplets(selections):
     for tuplet in abjad.select(selections).components(abjad.Tuplet):
         tuplet.toggle_prolation()
+
 
 cyc_settings = evans.CyclicList(
     [
@@ -74,10 +75,15 @@ cyc_settings = evans.CyclicList(
     forget=False,
 )
 
+
 def _set_name(selection):
     if selection[0].name in ("SubGroup 1", "SubGroup 2", "Staff 4"):
-        abjad.setting(selection[0]).instrumentName = abjad.Markup.center_column(cyc_settings(r=1)[0])
-        abjad.setting(selection[0]).shortInstrumentName = abjad.Markup.center_column(cyc_settings(r=1)[0])
+        abjad.setting(selection[0]).instrumentName = abjad.Markup.center_column(
+            cyc_settings(r=1)[0]
+        )
+        abjad.setting(selection[0]).shortInstrumentName = abjad.Markup.center_column(
+            cyc_settings(r=1)[0]
+        )
 
 
 maker = evans.SegmentMaker(
@@ -94,20 +100,12 @@ maker = evans.SegmentMaker(
             target_voice_name="Voice 3 copy",
         ),
         evans.call(
-            "SubGroup 1",
-            _set_name,
-            abjad.select().components(abjad.StaffGroup)
+            "SubGroup 1", _set_name, abjad.select().components(abjad.StaffGroup)
         ),
         evans.call(
-            "SubGroup 2",
-            _set_name,
-            abjad.select().components(abjad.StaffGroup)
+            "SubGroup 2", _set_name, abjad.select().components(abjad.StaffGroup)
         ),
-        evans.call(
-            "Staff 4",
-            _set_name,
-            abjad.select()
-        ),
+        evans.call("Staff 4", _set_name, abjad.select()),
         evans.call(
             "score",
             evans.SegmentMaker.rewrite_meter,
