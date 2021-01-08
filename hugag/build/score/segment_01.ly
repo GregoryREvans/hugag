@@ -72,7 +72,7 @@
                     {
 
                         \tweak edge-height #'(0.7 . 0)
-                        \times 2/3 {
+                        \times 4/6 {
                             % [Voice 1 measure 1]                              %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
 
                             r1..
@@ -110,7 +110,7 @@
                         }
 
                         \tweak edge-height #'(0.7 . 0)
-                        \times 2/3 {
+                        \times 4/6 {
                             % [Voice 1 measure 7]                              %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
 
                             r1
@@ -214,7 +214,7 @@
                         {
 
                             \tweak edge-height #'(0.7 . 0)
-                            \times 2/3 {
+                            \times 4/6 {
                                 % [Voice 2 measure 1]                          %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
 
                                 r1..
@@ -252,7 +252,7 @@
                             }
 
                             \tweak edge-height #'(0.7 . 0)
-                            \times 2/3 {
+                            \times 4/6 {
                                 % [Voice 2 measure 7]                          %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
 
                                 r1
@@ -294,7 +294,7 @@
                         {
 
                             \tweak edge-height #'(0.7 . 0)
-                            \times 2/3 {
+                            \times 4/6 {
                                 % [Voice 2 copy measure 1]                     %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
 
                                 r1..
@@ -332,7 +332,7 @@
                             }
 
                             \tweak edge-height #'(0.7 . 0)
-                            \times 2/3 {
+                            \times 4/6 {
                                 % [Voice 2 copy measure 7]                     %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
 
                                 r1
@@ -561,7 +561,7 @@
                             }
 
                             \tweak edge-height #'(0.7 . 0)
-                            \times 2/3 {
+                            \times 4/6 {
                                 % [Voice 3 measure 7]                          %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
 
                                 r1
@@ -656,7 +656,7 @@
                             }
 
                             \tweak edge-height #'(0.7 . 0)
-                            \times 2/3 {
+                            \times 4/6 {
                                 % [Voice 3 copy measure 7]                     %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
 
                                 r1
@@ -718,7 +718,7 @@
 
                         \tweak text #tuplet-number::calc-fraction-text
                         \tweak edge-height #'(0.7 . 0)
-                        \times 7/6 {
+                        \times 14/12 {
                             % [Voice 4 measure 1]                              %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
 
                             \clef "bass"
@@ -728,7 +728,7 @@
                         }
 
                         \tweak text #tuplet-number::calc-fraction-text
-                        \times 3/2 {
+                        \times 6/4 {
                             % [Voice 4 measure 2]                              %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
 
                             <gqs, gqf>2
@@ -810,7 +810,7 @@
                         }
 
                         \tweak text #tuplet-number::calc-fraction-text
-                        \times 5/4 {
+                        \times 10/8 {
                             % [Voice 4 measure 9]                              %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
 
                             <a, f>2
@@ -854,7 +854,7 @@
                     {
 
                         \tweak edge-height #'(0.7 . 0)
-                        \times 2/3 {
+                        \times 4/6 {
                             % [Voice 5 measure 1]                              %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
 
                             r1..
@@ -918,7 +918,7 @@
                         }
 
                         \tweak edge-height #'(0.7 . 0)
-                        \times 2/3 {
+                        \times 4/6 {
                             % [Voice 5 measure 7]                              %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
 
                             r1
