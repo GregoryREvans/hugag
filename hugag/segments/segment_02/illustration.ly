@@ -4,14 +4,6 @@
 \include "/Users/evansdsg2/abjad/docs/source/_stylesheets/abjad.ily"           %! abjad.LilyPondFile._get_formatted_includes()
 \include "/Users/evansdsg2/Scores/hugag/hugag/build/first_stylesheet.ily"      %! abjad.LilyPondFile._get_formatted_includes()
 
-\header {                                                                      %! abjad.LilyPondFile._get_formatted_blocks()
-    tagline = ##f
-}                                                                              %! abjad.LilyPondFile._get_formatted_blocks()
-
-\layout {}
-
-\paper {}
-
 \score {                                                                       %! abjad.LilyPondFile._get_formatted_blocks()
 
     \context Score = "hugag score"
@@ -23,11 +15,7 @@
 
             \tempo 4=115
             \time 1/1                                                          %! scaling time signatures
-            \mark \markup {
-                \bold
-                    {
-                    }
-                }
+            \mark \markup \bold {  }
             s1 * 1
             % [Global Context measure 2]                                       %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
 
@@ -210,10 +198,7 @@
 
                         \once \override MultiMeasureRest.color = #white        %! applying ending skips
                         R1 * 3/32
-                        ^ \markup {                                            %! applying ending skips
-                            \musicglyph                                        %! applying ending skips
-                                #"scripts.ushortfermata"                       %! applying ending skips
-                            }                                                  %! applying ending skips
+                        ^ \markup \center-align \musicglyph #"scripts.ushortfermata" %! applying ending skips
                         \stopStaff \startStaff                                 %! applying ending skips
 
                     }
@@ -225,22 +210,8 @@
             \context SubGroup = "SubGroup 1"
             \with
             {
-                instrumentName = \markup {
-                    \center-column
-                        {
-                            Bow
-                            Contact
-                            Point
-                        }
-                    }
-                shortInstrumentName = \markup {
-                    \center-column
-                        {
-                            bow
-                            contact
-                            point
-                        }
-                    }
+                instrumentName = \markup \center-column { Bow Contact Point }
+                shortInstrumentName = \markup \center-column { bow contact point }
             }
             <<
 
@@ -309,10 +280,7 @@
 
                             \once \override MultiMeasureRest.color = #white    %! applying ending skips
                             R1 * 3/32
-                            ^ \markup {                                        %! applying ending skips
-                                \musicglyph                                    %! applying ending skips
-                                    #"scripts.ushortfermata"                   %! applying ending skips
-                                }                                              %! applying ending skips
+                            ^ \markup \center-align \musicglyph #"scripts.ushortfermata" %! applying ending skips
                             \stopStaff \startStaff                             %! applying ending skips
 
                         }
@@ -386,10 +354,7 @@
 
                             \once \override MultiMeasureRest.color = #white    %! applying ending skips
                             R1 * 3/32
-                            ^ \markup {                                        %! applying ending skips
-                                \musicglyph                                    %! applying ending skips
-                                    #"scripts.ushortfermata"                   %! applying ending skips
-                                }                                              %! applying ending skips
+                            ^ \markup \center-align \musicglyph #"scripts.ushortfermata" %! applying ending skips
                             \stopStaff \startStaff                             %! applying ending skips
 
                         }
@@ -403,20 +368,8 @@
             \context SubGroup = "SubGroup 2"
             \with
             {
-                instrumentName = \markup {
-                    \center-column
-                        {
-                            Bow
-                            Angle
-                        }
-                    }
-                shortInstrumentName = \markup {
-                    \center-column
-                        {
-                            bow
-                            angle
-                        }
-                    }
+                instrumentName = \markup \center-column { Bow Angle }
+                shortInstrumentName = \markup \center-column { bow angle }
             }
             <<
 
@@ -485,10 +438,7 @@
 
                             \once \override MultiMeasureRest.color = #white    %! applying ending skips
                             R1 * 3/32
-                            ^ \markup {                                        %! applying ending skips
-                                \musicglyph                                    %! applying ending skips
-                                    #"scripts.ushortfermata"                   %! applying ending skips
-                                }                                              %! applying ending skips
+                            ^ \markup \center-align \musicglyph #"scripts.ushortfermata" %! applying ending skips
                             \stopStaff \startStaff                             %! applying ending skips
 
                         }
@@ -562,10 +512,7 @@
 
                             \once \override MultiMeasureRest.color = #white    %! applying ending skips
                             R1 * 3/32
-                            ^ \markup {                                        %! applying ending skips
-                                \musicglyph                                    %! applying ending skips
-                                    #"scripts.ushortfermata"                   %! applying ending skips
-                                }                                              %! applying ending skips
+                            ^ \markup \center-align \musicglyph #"scripts.ushortfermata" %! applying ending skips
                             \stopStaff \startStaff                             %! applying ending skips
 
                         }
@@ -582,20 +529,8 @@
                 \context Staff = "Staff 4"
                 \with
                 {
-                    instrumentName = \markup {
-                        \center-column
-                            {
-                                Left
-                                Hand
-                            }
-                        }
-                    shortInstrumentName = \markup {
-                        \center-column
-                            {
-                                left
-                                hand
-                            }
-                        }
+                    instrumentName = \markup \center-column { Left Hand }
+                    shortInstrumentName = \markup \center-column { left hand }
                 }
                 {
 
@@ -681,10 +616,7 @@
 
                         \once \override MultiMeasureRest.color = #white        %! applying ending skips
                         R1 * 3/32
-                        ^ \markup {                                            %! applying ending skips
-                            \musicglyph                                        %! applying ending skips
-                                #"scripts.ushortfermata"                       %! applying ending skips
-                            }                                                  %! applying ending skips
+                        ^ \markup \center-align \musicglyph #"scripts.ushortfermata" %! applying ending skips
                         \stopStaff \startStaff                                 %! applying ending skips
 
                     }
@@ -758,10 +690,7 @@
 
                         \once \override MultiMeasureRest.color = #white        %! applying ending skips
                         R1 * 3/32
-                        ^ \markup {                                            %! applying ending skips
-                            \musicglyph                                        %! applying ending skips
-                                #"scripts.ushortfermata"                       %! applying ending skips
-                            }                                                  %! applying ending skips
+                        ^ \markup \center-align \musicglyph #"scripts.ushortfermata" %! applying ending skips
                         \stopStaff \startStaff                                 %! applying ending skips
 
                     }

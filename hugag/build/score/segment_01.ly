@@ -9,11 +9,7 @@
             \tempo 4=115
             #(ly:expect-warning "strange time signature found")                %! scaling time signatures
             \time 7/6                                                          %! scaling time signatures
-            \mark \markup {
-                \bold
-                    {
-                    }
-                }
+            \mark \markup \bold {  }
             s1 * 7/6
             % [Global Context measure 2]                                       %! COMMENT_MEASURE_NUMBERS:abjad.SegmentMaker.comment_measure_numbers()
 
@@ -185,22 +181,8 @@
             \context SubGroup = "SubGroup 1"
             \with
             {
-                instrumentName = \markup {
-                    \center-column
-                        {
-                            Bow
-                            Contact
-                            Point
-                        }
-                    }
-                shortInstrumentName = \markup {
-                    \center-column
-                        {
-                            bow
-                            contact
-                            point
-                        }
-                    }
+                instrumentName = \markup \center-column { Bow Contact Point }
+                shortInstrumentName = \markup \center-column { bow contact point }
             }
             <<
 
@@ -369,20 +351,8 @@
             \context SubGroup = "SubGroup 2"
             \with
             {
-                instrumentName = \markup {
-                    \center-column
-                        {
-                            Bow
-                            Angle
-                        }
-                    }
-                shortInstrumentName = \markup {
-                    \center-column
-                        {
-                            bow
-                            angle
-                        }
-                    }
+                instrumentName = \markup \center-column { Bow Angle }
+                shortInstrumentName = \markup \center-column { bow angle }
             }
             <<
 
@@ -402,63 +372,21 @@
 
                                 \tweak Y-offset #-4.0
                                 \tweak stencil #ly:text-interface::print
-                                \tweak text \markup {
-                                    \vcenter
-                                        \concat
-                                            {
-                                                \translate
-                                                    #'(0 . 0)
-                                                    -45
-                                                \translate
-                                                    #'(0 . 1)
-                                                    \teeny
-                                                        o
-                                                \hspace
-                                                    #0.5
-                                            }
-                                    }
+                                \tweak text \markup { \vcenter \concat { \translate #'(0 . 0) -45 \translate #'(0 . 1) \teeny o \hspace #0.5 } }
                                 c'2.
                                 - \tweak style #'line
                                 \glissando
 
                                 \tweak Y-offset #0.0
                                 \tweak stencil #ly:text-interface::print
-                                \tweak text \markup {
-                                    \vcenter
-                                        \concat
-                                            {
-                                                \translate
-                                                    #'(0 . 0)
-                                                    45
-                                                \translate
-                                                    #'(0 . 1)
-                                                    \teeny
-                                                        o
-                                                \hspace
-                                                    #0.5
-                                            }
-                                    }
+                                \tweak text \markup { \vcenter \concat { \translate #'(0 . 0) 45 \translate #'(0 . 1) \teeny o \hspace #0.5 } }
                                 c'4
                                 - \tweak style #'line
                                 \glissando
 
                                 \tweak Y-offset #-2.2222222222222223
                                 \tweak stencil #ly:text-interface::print
-                                \tweak text \markup {
-                                    \vcenter
-                                        \concat
-                                            {
-                                                \translate
-                                                    #'(0 . 0)
-                                                    -5
-                                                \translate
-                                                    #'(0 . 1)
-                                                    \teeny
-                                                        o
-                                                \hspace
-                                                    #0.5
-                                            }
-                                    }
+                                \tweak text \markup { \vcenter \concat { \translate #'(0 . 0) -5 \translate #'(0 . 1) \teeny o \hspace #0.5 } }
                                 c'4
 
                                 r4
@@ -468,68 +396,26 @@
 
                             \tweak Y-offset #-4.0
                             \tweak stencil #ly:text-interface::print
-                            \tweak text \markup {
-                                \vcenter
-                                    \concat
-                                        {
-                                            \translate
-                                                #'(0 . 0)
-                                                -45
-                                            \translate
-                                                #'(0 . 1)
-                                                \teeny
-                                                    o
-                                            \hspace
-                                                #0.5
-                                        }
-                                }
+                            \tweak text \markup { \vcenter \concat { \translate #'(0 . 0) -45 \translate #'(0 . 1) \teeny o \hspace #0.5 } }
                             c'2
                             - \tweak style #'line
                             \glissando
 
                             \tweak Y-offset #0.6666666666666666
                             \tweak stencil #ly:text-interface::print
-                            \tweak text \markup {
-                                \vcenter
-                                    \concat
-                                        {
-                                            \translate
-                                                #'(0 . 0)
-                                                60
-                                            \translate
-                                                #'(0 . 1)
-                                                \teeny
-                                                    o
-                                            \hspace
-                                                #0.5
-                                        }
-                                }
+                            \tweak text \markup { \vcenter \concat { \translate #'(0 . 0) 60 \translate #'(0 . 1) \teeny o \hspace #0.5 } }
                             c'4
                             - \tweak style #'line
                             \glissando
 
                             \tweak Y-offset #-2.6666666666666665
                             \tweak stencil #ly:text-interface::print
-                            \tweak text \markup {
-                                \vcenter
-                                    \concat
-                                        {
-                                            \translate
-                                                #'(0 . 0)
-                                                -15
-                                            \translate
-                                                #'(0 . 1)
-                                                \teeny
-                                                    o
-                                            \hspace
-                                                #0.5
-                                        }
-                                }
+                            \tweak text \markup { \vcenter \concat { \translate #'(0 . 0) -15 \translate #'(0 . 1) \teeny o \hspace #0.5 } }
                             c'4
 
                             \tweak style #'cross
                             c'4
-                            ^ \markup { clb. }
+                            ^ \markup clb.
 
                             r4
 
@@ -696,20 +582,8 @@
                 \context Staff = "Staff 4"
                 \with
                 {
-                    instrumentName = \markup {
-                        \center-column
-                            {
-                                Left
-                                Hand
-                            }
-                        }
-                    shortInstrumentName = \markup {
-                        \center-column
-                            {
-                                left
-                                hand
-                            }
-                        }
+                    instrumentName = \markup \center-column { Left Hand }
+                    shortInstrumentName = \markup \center-column { left hand }
                 }
                 {
 
@@ -751,7 +625,7 @@
                                 \tweak Accidental.text \one-eighth-flat-markup
                                 b
                             >2
-                            ^ \markup { clt. }
+                            ^ \markup clt.
                             \glissando                                         %! abjad.glissando(7)
 
                         }

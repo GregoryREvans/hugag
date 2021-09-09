@@ -65,12 +65,12 @@ def _toggle_tuplets(selections):
 
 cyc_settings = evans.CyclicList(
     [
-        ["Bow", "Contact", "Point"],
-        ["bow", "contact", "point"],
-        ["Bow", "Angle"],
-        ["bow", "angle"],
-        ["Left", "Hand"],
-        ["left", "hand"],
+        "Bow Contact Point",
+        "bow contact point",
+        "Bow Angle",
+        "bow angle",
+        "Left Hand",
+        "left hand",
     ],
     forget=False,
 )
@@ -78,11 +78,13 @@ cyc_settings = evans.CyclicList(
 
 def _set_name(selection):
     if selection[0].name in ("SubGroup 1", "SubGroup 2", "Staff 4"):
-        abjad.setting(selection[0]).instrumentName = abjad.Markup.center_column(
-            cyc_settings(r=1)[0]
+        abjad.setting(selection[0]).instrumentName = abjad.Markup(
+            fr"\markup \center-column {{ {cyc_settings(r=1)[0]} }}",
+            literal=True,
         )
-        abjad.setting(selection[0]).shortInstrumentName = abjad.Markup.center_column(
-            cyc_settings(r=1)[0]
+        abjad.setting(selection[0]).shortInstrumentName = abjad.Markup(
+            fr"\markup \center-column {{ {cyc_settings(r=1)[0]} }}",
+            literal=True,
         )
 
 

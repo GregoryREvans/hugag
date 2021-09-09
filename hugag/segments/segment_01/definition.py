@@ -66,12 +66,12 @@ def _toggle_tuplets(selections):
 
 cyc_settings = evans.CyclicList(
     [
-        ["Bow", "Contact", "Point"],
-        ["bow", "contact", "point"],
-        ["Bow", "Angle"],
-        ["bow", "angle"],
-        ["Left", "Hand"],
-        ["left", "hand"],
+        "Bow Contact Point",
+        "bow contact point",
+        "Bow Angle",
+        "bow angle",
+        "Left Hand",
+        "left hand",
     ],
     forget=False,
 )
@@ -79,11 +79,13 @@ cyc_settings = evans.CyclicList(
 
 def _set_name(selection):
     if selection[0].name in ("SubGroup 1", "SubGroup 2", "Staff 4"):
-        abjad.setting(selection[0]).instrumentName = abjad.Markup.center_column(
-            cyc_settings(r=1)[0]
+        abjad.setting(selection[0]).instrumentName = abjad.Markup(
+            fr"\markup \center-column {{ {cyc_settings(r=1)[0]} }}",
+            literal=True,
         )
-        abjad.setting(selection[0]).shortInstrumentName = abjad.Markup.center_column(
-            cyc_settings(r=1)[0]
+        abjad.setting(selection[0]).shortInstrumentName = abjad.Markup(
+            fr"\markup \center-column {{ {cyc_settings(r=1)[0]} }}",
+            literal=True,
         )
 
 
@@ -146,8 +148,8 @@ maker = evans.SegmentMaker(
         ),
         evans.attach(
             "Voice 3",
-            abjad.Markup("clb.", direction=abjad.Up),
-            baca.leaf(7),
+            abjad.Markup(r"\markup clb.", direction=abjad.Up, literal=True),
+            baca.selectors.leaf(7),
         ),
         # evans.attach(
         #     "Voice 3",
@@ -157,7 +159,7 @@ maker = evans.SegmentMaker(
         #         ],
         #         format_slot="before",
         #     ),
-        #     baca.leaf(9),
+        #     baca.selectors.leaf(9),
         # ),
         # evans.attach(
         #     "Voice 3 copy",
@@ -171,7 +173,7 @@ maker = evans.SegmentMaker(
         #         ],
         #         format_slot="before",
         #     ),
-        #     baca.leaf(9),
+        #     baca.selectors.leaf(9),
         # ),
         evans.call(
             "Voice 4",
@@ -215,7 +217,7 @@ maker = evans.SegmentMaker(
         #         ],
         #         format_slot="before",
         #     ),
-        #     baca.leaf(6),
+        #     baca.selectors.leaf(6),
         # ),
         # evans.attach(
         #     "Voice 5",
@@ -229,7 +231,7 @@ maker = evans.SegmentMaker(
         #         ],
         #         format_slot="before",
         #     ),
-        #     baca.leaf(10),
+        #     baca.selectors.leaf(10),
         # ),
         evans.call(
             "Voice 5",
@@ -239,12 +241,12 @@ maker = evans.SegmentMaker(
         evans.attach(
             "Voice 5",
             abjad.Dynamic("pp", direction=abjad.Up),
-            baca.leaf(0),
+            baca.selectors.leaf(0),
         ),
         evans.attach(
             "Voice 5",
             abjad.StartHairpin("--", direction=abjad.Up),
-            baca.leaf(0),
+            baca.selectors.leaf(0),
         ),
         evans.call(
             "Voice 1",
@@ -265,8 +267,8 @@ maker = evans.SegmentMaker(
         ),
         evans.attach(
             "Voice 4",
-            abjad.Markup("clt.", direction=abjad.Up),
-            baca.leaf(3),
+            abjad.Markup(r"\markup clt.", direction=abjad.Up, literal=True),
+            baca.selectors.leaf(3),
         ),
     ],
     score_template=score,
