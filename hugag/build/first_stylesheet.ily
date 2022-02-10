@@ -4,10 +4,10 @@
 #(set-default-paper-size "letterportrait")
 #(set-global-staff-size 14) % was 12
 
-\include "/Users/evansdsg2/evans/lilypond/evans-markups.ily"
-\include "/Users/evansdsg2/evans/lilypond/evans-spanners.ily"
-\include "/Users/evansdsg2/baca/lilypond/baca.ily"
-\include "/Users/evansdsg2/abjad/docs/source/_stylesheets/ekmelos-ji-accidental-markups.ily"
+\include "/Users/gregoryevans/evans/lilypond/evans-markups.ily"
+\include "/Users/gregoryevans/evans/lilypond/evans-spanners.ily"
+\include "/Users/gregoryevans/baca/lilypond/baca.ily"
+\include "/Users/gregoryevans/abjad/docs/source/_stylesheets/ekmelos-ji-accidental-markups.ily"
 
 \header {
 	tagline = ##f
